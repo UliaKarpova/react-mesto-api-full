@@ -1,0 +1,10 @@
+.popup__delete-submit {
+    margin: 36px 36px;
+    }
+    
+@media (max-width: 520px) {
+    .popup__delete-submit {
+        margin: 22px 22px;
+    }
+}
+    

@@ -1,0 +1,20 @@
+.sign__submit {
+    font-family: 'Inter', sans-serif;
+    color: black;
+    min-height: 50px;
+    background-color: #fff;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: 0em;
+    text-align: center;
+    margin: 186px 0 15px;
+    padding: 0;
+    border: none;
+    border-radius: 2px;
+}
+
+.sign__submit:hover {
+    cursor: pointer;
+    opacity: .6;
+}

@@ -1,0 +1,16 @@
+.sign__to-login {
+    font-family: 'Inter', sans-serif;
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 17px;
+    letter-spacing: 0em;
+    text-align: center;
+    margin: 0;
+}
+
+.sign__to-login:hover {
+    cursor: pointer;
+    opacity: .6;
+}

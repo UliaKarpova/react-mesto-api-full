@@ -1,0 +1,10 @@
+.popup-larger__container {
+    margin: auto;
+    position: relative;
+    max-width: fit-content;
+    max-height: fit-content;
+    display: flex;
+    flex-direction: column;
+    top: 50%;
+    transform: translateY(-50%);
+}

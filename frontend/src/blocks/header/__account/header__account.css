@@ -1,0 +1,10 @@
+.header__account {
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 22px;
+    letter-spacing: 0em;
+    text-align: right;
+    color: #fff;
+    margin: 0;
+}

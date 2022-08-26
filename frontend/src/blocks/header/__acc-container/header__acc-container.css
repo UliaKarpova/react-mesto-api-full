@@ -1,0 +1,8 @@
+.header__acc-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+}

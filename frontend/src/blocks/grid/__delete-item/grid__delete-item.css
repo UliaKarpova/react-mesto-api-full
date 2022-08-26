@@ -1,0 +1,21 @@
+.grid__delete-item {
+    position: absolute;
+    width: 18px;
+    height: 19px;
+    background-image: url(../../../images/Trash.svg);
+    background-size: contain;
+    background-color: rgba(0, 0, 0, 0);
+    top: 20px;
+    right: 20px;
+    border: none;
+}
+
+
+.grid__delete-item:hover {
+    opacity: .6;
+    cursor: pointer;
+}
+
+.grid__delete-item_hidden {
+   display: none;
+}
