@@ -7,6 +7,7 @@ const { login, createUser } = require('./src/controllers/usersController');
 require('dotenv').config();
 
 const auth = require('./src/middlewares/auth');
+const CORS = require('./src/middlewares/CORS');
 
 const userRoutes = require('./src/routes/usersRoutes');
 const cardRoutes = require('./src/routes/cardsRoutes');
@@ -36,6 +37,8 @@ app.get('/crash-test', () => {
     throw new Error('Сервер сейчас упадёт');
   }, 0);
 });
+
+app.use(CORS);
 
 app.post('/signin', celebrate({
   body: Joi.object().keys({
