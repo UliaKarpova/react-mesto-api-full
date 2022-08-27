@@ -5,7 +5,7 @@ const { errors } = require('celebrate');
 const routes = require('./src/routes/index');
 require('dotenv').config();
 
-const { CORS } = require('./src/middlewares/CORS');
+const CORS = require('./src/middlewares/CORS');
 const errorProcessing = require('./src/middlewares/errorProcessing');
 
 const { PORT = 3000 } = process.env;
