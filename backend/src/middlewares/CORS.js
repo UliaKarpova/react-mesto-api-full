@@ -5,7 +5,7 @@ const allowedCors = [
 ];
 const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
 
-module.exports.CORS = (req, res, next) => {
+function CORS(req, res, next) {
   const { method } = req;
   if (method === 'OPTIONS') {
     res.header('Access-Control-Allow-Methods', DEFAULT_ALLOWED_METHODS);
@@ -16,4 +16,6 @@ module.exports.CORS = (req, res, next) => {
     res.header('Access-Control-Allow-Origin', origin);
   }
   next();
-};
+}
+
+module.exports = CORS;
