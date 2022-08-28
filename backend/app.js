@@ -2,22 +2,23 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 const { errors } = require('celebrate');
-const cors = require('cors');
+/* const cors = require('cors'); */
 
 const routes = require('./src/routes/index');
 require('dotenv').config();
 const errorProcessing = require('./src/middlewares/errorProcessing');
+/* const CORS = require('./src/middlewares/CORS'); */
 
 const { PORT = 3000 } = process.env;
 const app = express();
 app.use(cookieParser());
 const { requestLogger, errorLogger } = require('./src/middlewares/logger');
 
-const corsOptions = {
+/* const corsOptions = {
   origin: 'https://learn.more.nomoredomains.sbs',
   credentials: true,
   optionsSuccessStatus: 200,
-};
+}; */
 
 app.use(express.json());
 
@@ -35,7 +36,7 @@ app.get('/crash-test', () => {
   }, 0);
 });
 
-app.use(cors(corsOptions));
+/* app.use(cors(corsOptions)); */
 
 app.use(routes);
 

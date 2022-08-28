@@ -68,7 +68,7 @@ function App() {
         }).catch((err) => console.log(err));
     }, [])
 
-    useEffect(() => {
+    /* useEffect(() => {
         tokenCheck();
     }, [])
 
@@ -86,7 +86,7 @@ function App() {
                     }).catch((err) => console.log(err));
                 }
         }
-    }
+    } */
 
     function handleRegisterSubmit(data) {
         apiAuth.register(data)

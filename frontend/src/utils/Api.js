@@ -74,7 +74,8 @@ class Api {
 const api = new Api({
     url: 'https://api.learn.more.nomoredomains.sbs/',
     headers: {
-      /* authorization: 'd60f88da-0c33-4cb7-a701-de2dcdca59ad', */
+      "Origin": 'https://learn.more.nomoredomains.sbs',
+        /* authorization: 'd60f88da-0c33-4cb7-a701-de2dcdca59ad', */
       "content-Type": "application/json",
     }
   });
