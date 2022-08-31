@@ -75,10 +75,12 @@ const api = new Api({
     url: 'https://api.learn.more.nomoredomains.sbs/',
     headers: {
       "Origin": 'https://learn.more.nomoredomains.sbs',
-      'Access-Control-Request-Origin': 'https://learn.more.nomoredomains.sbs',
-      /* authorization: 'd60f88da-0c33-4cb7-a701-de2dcdca59ad', */
+      "Access-Control-Request-Origin": 'https://learn.more.nomoredomains.sbs',
       "Content-Type": "application/json",
     }
 });
 
 export default api;
+
+
+/* 'Authorization': 'd60f88da-0c33-4cb7-a701-de2dcdca59ad', */
