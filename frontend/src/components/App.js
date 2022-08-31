@@ -68,7 +68,7 @@ function App() {
         }).catch((err) => console.log(err));
     }, [])
 
-    useEffect(() => {
+    /* useEffect(() => {
         tokenCheck();
     }, [])
 
@@ -86,7 +86,7 @@ function App() {
                     }).catch((err) => console.log(err));
                 }
         }
-    }
+    } */
 
     function handleRegisterSubmit(data) {
         apiAuth.register(data)
@@ -101,7 +101,7 @@ function App() {
 
     function handleAccountExit() {
         history.push('/signin');
-        localStorage.removeItem('token');
+        /* localStorage.removeItem('token'); */
         setUserEmail('');
     }
 
@@ -123,9 +123,9 @@ function App() {
     function handleLogin(data) {
         apiAuth.auth(data)
         .then((res) => {
-            localStorage.setItem('token', res.token);
+            /* localStorage.setItem('token', res.token); */
             setLoggedIn(true);
-            console.log(res);
+            /* console.log(res); */
             setUserEmail(data.email);
             history.push('/');
         }).catch((err) => console.log(err))

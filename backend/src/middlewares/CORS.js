@@ -9,7 +9,7 @@ module.exports.CORS = (req, res, next) => {
   const { method } = req;
   if (method === 'OPTIONS') {
     res.header('Access-Control-Allow-Methods', DEFAULT_ALLOWED_METHODS);
-    return res.end();
+    res.end();
   }
   const { origin } = req.headers;
   if (allowedCors.includes(origin)) {

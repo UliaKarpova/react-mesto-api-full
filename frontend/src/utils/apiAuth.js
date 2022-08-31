@@ -33,7 +33,7 @@ export const auth = (data) => {
     }).then(getResponseData);
 }
 
-export const isTokenValid = (token) => {
+/* export const isTokenValid = (token) => {
     return fetch(`${BASE_URL}/users/me`, {
         method: "GET",
         headers: {
@@ -44,4 +44,4 @@ export const isTokenValid = (token) => {
         },
         credentials: 'include'
     }).then(getResponseData);
-}
+} */
