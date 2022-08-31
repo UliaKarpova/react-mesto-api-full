@@ -3,9 +3,9 @@ const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 const { celebrate, Joi } = require('celebrate');
 const { errors } = require('celebrate');
-const { login, createUser } = require('./src/controllers/usersController');
+const cors = require('cors');
 
-/* const cors = require('cors'); */
+const { login, createUser } = require('./src/controllers/usersController');
 
 require('dotenv').config();
 const auth = require('./src/middlewares/auth');
@@ -17,18 +17,18 @@ const NotFoundError = require('./src/errors/NotFoundError');
 
 const notFoundErrorMessage = 'Роут не найден';
 const errorProcessing = require('./src/middlewares/errorProcessing');
-/* const CORS = require('./src/middlewares/CORS'); */
+/* const { CORS } = require('./src/middlewares/CORS'); */
 
 const { PORT = 3000 } = process.env;
 const app = express();
 app.use(cookieParser());
 const { requestLogger, errorLogger } = require('./src/middlewares/logger');
 
-/* const corsOptions = {
+const corsOptions = {
   origin: 'https://learn.more.nomoredomains.sbs',
   credentials: true,
   optionsSuccessStatus: 200,
-}; */
+};
 
 app.use(express.json());
 
@@ -38,6 +38,8 @@ app.use((req, res, next) => {
   console.log(`${req.method}: ${req.path} ${JSON.stringify(req.body)}`);
   next();
 });
+
+app.use(cors(corsOptions));
 
 app.use(requestLogger);
 app.post('/signin', celebrate({
@@ -70,9 +72,7 @@ app.get('/crash-test', () => {
   }, 0);
 });
 
-/* app.use(cors(corsOptions));
-
-app.use(routes); */
+/* app.use(routes); */
 
 app.use(errorLogger);
 app.use(errors());
