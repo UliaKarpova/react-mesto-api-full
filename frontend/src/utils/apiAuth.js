@@ -11,8 +11,8 @@ export const register = (data) => {
     return fetch(`${BASE_URL}/signup`, {
         method: "POST",
         headers: {
-            "Content-Type": "application/json",
-            "Origin": 'https://learn.more.nomoredomains.sbs'
+            "Origin": 'https://learn.more.nomoredomains.sbs',
+            "Content-Type": "application/json"
         },
         credentials: 'include',
         body: JSON.stringify(data)
@@ -23,23 +23,22 @@ export const auth = (data) => {
     return fetch(`${BASE_URL}/signin`, {
         method: "POST",
         headers: {
-            "Content-Type": "application/json",
-            "Origin": 'https://learn.more.nomoredomains.sbs'
+            "Origin": 'https://learn.more.nomoredomains.sbs',
+            "Content-Type": "application/json"
         },
         credentials: 'include',
         body: JSON.stringify(data)
     }).then(getResponseData);
 }
-/* 
-export const isTokenValid = (token) => {
+
+/* export const isTokenValid = (token) => {
     return fetch(`${BASE_URL}/users/me`, {
         method: "GET",
         headers: {
             'Accept': 'application/json',
             "Content-Type": "application/json",
-            "Origin": 'https://learn.more.nomoredomains.sbs'
-            /* "Authorization": `Bearer ${token}`
+            "Authorization": `Bearer ${token}`
         },
-        credentials: 'include',
+        credentials: 'include'
     }).then(getResponseData);
 } */
