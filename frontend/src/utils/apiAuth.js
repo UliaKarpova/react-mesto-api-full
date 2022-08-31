@@ -12,6 +12,7 @@ export const register = (data) => {
         method: "POST",
         headers: {
             "Origin": 'https://learn.more.nomoredomains.sbs',
+            'Access-Control-Request-Origin': 'https://learn.more.nomoredomains.sbs',
             "Content-Type": "application/json"
         },
         credentials: 'include',
@@ -24,6 +25,7 @@ export const auth = (data) => {
         method: "POST",
         headers: {
             "Origin": 'https://learn.more.nomoredomains.sbs',
+            'Access-Control-Request-Origin': 'https://learn.more.nomoredomains.sbs',
             "Content-Type": "application/json"
         },
         credentials: 'include',
@@ -37,6 +39,7 @@ export const isTokenValid = (token) => {
         headers: {
             'Accept': 'application/json',
             "Content-Type": "application/json",
+            'Access-Control-Request-Origin': 'https://learn.more.nomoredomains.sbs',
             "Authorization": `Bearer ${token}`
         },
         credentials: 'include'

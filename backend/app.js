@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 const { celebrate, Joi } = require('celebrate');
 const { errors } = require('celebrate');
-const cors = require('cors');
+/* const cors = require('cors'); */
 
 const { login, createUser } = require('./src/controllers/usersController');
 
@@ -24,11 +24,11 @@ const app = express();
 app.use(cookieParser());
 const { requestLogger, errorLogger } = require('./src/middlewares/logger');
 
-const corsOptions = {
+/* const corsOptions = {
   origin: 'https://learn.more.nomoredomains.sbs',
   credentials: true,
   optionsSuccessStatus: 200,
-};
+}; */
 
 app.use(express.json());
 
@@ -39,7 +39,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(cors(corsOptions));
+/* app.use(cors(corsOptions)); */
 
 app.use(requestLogger);
 app.post('/signin', celebrate({
