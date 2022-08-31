@@ -17,7 +17,7 @@ const NotFoundError = require('./src/errors/NotFoundError');
 
 const notFoundErrorMessage = 'Роут не найден';
 const errorProcessing = require('./src/middlewares/errorProcessing');
-/* const { CORS } = require('./src/middlewares/CORS'); */
+const { CORS } = require('./src/middlewares/CORS');
 
 const { PORT = 3000 } = process.env;
 const app = express();
@@ -42,6 +42,7 @@ app.use((req, res, next) => {
 /* app.use(cors(corsOptions)); */
 
 app.use(requestLogger);
+app.use(CORS);
 app.post('/signin', celebrate({
   body: Joi.object().keys({
     email: Joi.string().email({ tlds: { allow: false } }).required(),
