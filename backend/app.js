@@ -4,12 +4,13 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
+const cors = require('cors');
 const { celebrate, Joi } = require('celebrate');
 const { login, createUser } = require('./src/controllers/usersController');
 const auth = require('./src/middlewares/auth');
 const userRoutes = require('./src/routes/usersRoutes');
 const cardRoutes = require('./src/routes/cardsRoutes');
-const { CORS } = require('./src/middlewares/CORS');
+/* const { CORS } = require('./src/middlewares/CORS'); */
 const errorProcessing = require('./src/middlewares/errorProcessing');
 const NotFoundError = require('./src/errors/NotFoundError');
 
@@ -27,7 +28,7 @@ const { requestLogger, errorLogger } = require('./src/middlewares/logger');
 }; */
 
 app.use(express.json());
-app.use(CORS);
+app.use(cors());
 
 mongoose.connect('mongodb://127.0.0.1:27017/mestodb');
 

@@ -12,7 +12,7 @@ class Api {
     }
 
     getInfo = () => {
-        return fetch(`${this._url}users/me`, {
+        return fetch(`${this._url}/users/me`, {
             method: 'GET',
             headers: this._headers,
             credentials: 'include'
@@ -21,7 +21,7 @@ class Api {
 
     getPhotos = () => {
         console.log(this._url);
-        return fetch(`${this._url}cards`, {
+        return fetch(`${this._url}/cards`, {
             method: 'GET',
             headers: this._headers,
             credentials: 'include'
@@ -29,7 +29,7 @@ class Api {
     }
 
     sendNewProfileInfo = (data) => {
-        return fetch(`${this._url}users/me`, {
+        return fetch(`${this._url}/users/me`, {
             method: 'PATCH',
             headers: this._headers,
             credentials: 'include',
@@ -38,7 +38,7 @@ class Api {
     }
 
     addNewCard = (data) => {
-        return fetch(`${this._url}cards`, {
+        return fetch(`${this._url}/cards`, {
             method: 'POST',
             headers: this._headers,
             credentials: 'include',
@@ -47,7 +47,7 @@ class Api {
     }
 
     changeLikeCardStatus = (data, isLiked) => {
-        return fetch(`${this._url}cards/${data}/likes`, {
+        return fetch(`${this._url}/cards/${data}/likes`, {
             method: `${isLiked ? 'PUT' : 'DELETE'}`,
             headers: this._headers,
             credentials: 'include'
@@ -55,7 +55,7 @@ class Api {
     }
 
     deleteImage = (data) => {
-        return fetch(`${this._url}cards/${data._id}`, {
+        return fetch(`${this._url}/cards/${data._id}`, {
             method: 'DELETE',
             headers: this._headers,
             credentials: 'include'
@@ -63,7 +63,7 @@ class Api {
     }
 
     sendNewAvatar = (data) => {
-        return fetch(`${this._url}users/me/avatar`, {
+        return fetch(`${this._url}/users/me/avatar`, {
             method: 'PATCH',
             headers: this._headers,
             credentials: 'include',
@@ -73,7 +73,7 @@ class Api {
 }
 
 const api = new Api({
-    url: 'https://api.learn.more.nomoredomains.sbs/',
+    url: 'https://api.learn.more.nomoredomains.sbs',
     headers: {
       "Origin": 'https://learn.more.nomoredomains.sbs',
       "Access-Control-Request-Origin": 'https://learn.more.nomoredomains.sbs',
