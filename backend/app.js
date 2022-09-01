@@ -4,29 +4,28 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-/* const cors = require('cors'); */
+const cors = require('cors');
 const { celebrate, Joi } = require('celebrate');
 const { login, createUser } = require('./src/controllers/usersController');
 const auth = require('./src/middlewares/auth');
 const userRoutes = require('./src/routes/usersRoutes');
 const cardRoutes = require('./src/routes/cardsRoutes');
-const { CORS } = require('./src/middlewares/CORS');
+/* const { CORS } = require('./src/middlewares/CORS'); */
 const errorProcessing = require('./src/middlewares/errorProcessing');
 const NotFoundError = require('./src/errors/NotFoundError');
 
+const corsOptions = {
+  origin: 'https://learn.more.nomoredomains.sbs',
+  credentials: true,
+  optionsSuccessStatus: 200,
+};
 const { PORT = 3000 } = process.env;
 const app = express();
-app.use(CORS);
+app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 const { requestLogger, errorLogger } = require('./src/middlewares/logger');
-
-/* const corsOptions = {
-  origin: 'https://learn.more.nomoredomains.sbs',
-  credentials: true,
-  optionsSuccessStatus: 200,
-}; */
 
 app.use(express.json());
 
@@ -36,8 +35,6 @@ app.use((req, res, next) => {
   console.log(`${req.method}: ${req.path} ${JSON.stringify(req.body)}`);
   next();
 });
-
-/* app.use(cors(corsOptions)); */
 
 app.use(requestLogger);
 app.post('/signin', celebrate({
