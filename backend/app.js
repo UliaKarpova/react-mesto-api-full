@@ -1,26 +1,22 @@
+require('dotenv').config();
+const { errors } = require('celebrate');
 const express = require('express');
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const { celebrate, Joi } = require('celebrate');
-const { errors } = require('celebrate');
-/* const cors = require('cors'); */
-
 const { login, createUser } = require('./src/controllers/usersController');
-
-require('dotenv').config();
 const auth = require('./src/middlewares/auth');
-
 const userRoutes = require('./src/routes/usersRoutes');
 const cardRoutes = require('./src/routes/cardsRoutes');
-
-const NotFoundError = require('./src/errors/NotFoundError');
-
-const notFoundErrorMessage = 'Роут не найден';
-const errorProcessing = require('./src/middlewares/errorProcessing');
 const { CORS } = require('./src/middlewares/CORS');
+const errorProcessing = require('./src/middlewares/errorProcessing');
+const NotFoundError = require('./src/errors/NotFoundError');
 
 const { PORT = 3000 } = process.env;
 const app = express();
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 const { requestLogger, errorLogger } = require('./src/middlewares/logger');
 
@@ -31,6 +27,7 @@ const { requestLogger, errorLogger } = require('./src/middlewares/logger');
 }; */
 
 app.use(express.json());
+app.use(CORS);
 
 mongoose.connect('mongodb://127.0.0.1:27017/mestodb');
 
@@ -42,7 +39,6 @@ app.use((req, res, next) => {
 /* app.use(cors(corsOptions)); */
 
 app.use(requestLogger);
-app.use(CORS);
 app.post('/signin', celebrate({
   body: Joi.object().keys({
     email: Joi.string().email({ tlds: { allow: false } }).required(),
@@ -65,7 +61,7 @@ app.use(auth);
 app.use('/', userRoutes);
 app.use('/', cardRoutes);
 app.use('/', () => {
-  throw new NotFoundError(notFoundErrorMessage);
+  throw new NotFoundError('Роут не найден');
 });
 app.get('/crash-test', () => {
   setTimeout(() => {
