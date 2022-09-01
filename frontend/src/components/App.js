@@ -63,16 +63,16 @@ function App() {
         api.getInfo()])
 
         .then(([cards, data]) => {
-            setCards(cards);
+            setCards(cards.data);
             setCurrentUser(data);
         }).catch((err) => console.log(err));
     }, [])
 
     /* useEffect(() => {
-        tokenCheck();
+        api.changeLikeCardStatus();
     }, [])
 
-    function tokenCheck() {
+    /* function tokenCheck() {
         if (localStorage.getItem('token')) {
             const token = localStorage.getItem('token');
                 if (token) {
@@ -194,7 +194,7 @@ function App() {
         const isLiked = card.likes.some(i => i._id === currentUser._id);
 
         api.changeLikeCardStatus(card._id, !isLiked).then((newCard) => {
-            setCards((cards) => cards.data.map((c) => c._id === card._id ? newCard : c));
+            setCards((cards) => cards.map((c) => c._id === card._id ? newCard : c));
         }).catch((err) => console.log(err))
     }
 
@@ -202,7 +202,7 @@ function App() {
         event.preventDefault();
 
         api.deleteImage(cardGoingToBeDeleted).then(() => {
-            setCards((cards) => cards.data.filter((c) => c._id === cardGoingToBeDeleted._id ? '' : c));
+            setCards((cards) => cards.filter((c) => c._id === cardGoingToBeDeleted._id ? '' : c));
             closeAllPopups();
             setCardGoingToBeDeleted({});
         }).catch((err) => console.log(err))
