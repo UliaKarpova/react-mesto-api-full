@@ -13,6 +13,7 @@ const cardRoutes = require('./src/routes/cardsRoutes');
 const { CORS } = require('./src/middlewares/CORS');
 const errorProcessing = require('./src/middlewares/errorProcessing');
 const NotFoundError = require('./src/errors/NotFoundError');
+const { requestLogger, errorLogger } = require('./src/middlewares/logger');
 
 /* const corsOptions = {
   origin: 'https://learn.more.nomoredomains.sbs',
@@ -20,23 +21,22 @@ const NotFoundError = require('./src/errors/NotFoundError');
   optionsSuccessStatus: 200,
 }; */
 const { PORT = 3000 } = process.env;
+mongoose.connect('mongodb://127.0.0.1:27017/mestodb');
+
 const app = express();
 app.use(CORS);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
-const { requestLogger, errorLogger } = require('./src/middlewares/logger');
+app.use(requestLogger);
 
-app.use(express.json());
-
-mongoose.connect('mongodb://127.0.0.1:27017/mestodb');
+/* app.use(express.json()); */
 
 app.use((req, res, next) => {
   console.log(`${req.method}: ${req.path} ${JSON.stringify(req.body)}`);
   next();
 });
 
-app.use(requestLogger);
 app.post('/signin', celebrate({
   body: Joi.object().keys({
     email: Joi.string().email({ tlds: { allow: false } }).required(),
