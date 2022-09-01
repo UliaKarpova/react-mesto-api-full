@@ -75,8 +75,8 @@ class Api {
 const api = new Api({
     url: 'https://api.learn.more.nomoredomains.sbs',
     headers: {
-      "Origin": 'https://learn.more.nomoredomains.sbs',
-      "Access-Control-Request-Origin": 'https://learn.more.nomoredomains.sbs',
+      /* "Origin": 'https://learn.more.nomoredomains.sbs',
+      "Access-Control-Request-Origin": 'https://learn.more.nomoredomains.sbs', */
       "Content-Type": "application/json",
     }
 });

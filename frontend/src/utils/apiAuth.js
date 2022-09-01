@@ -11,8 +11,8 @@ export const register = (data) => {
     return fetch(`${BASE_URL}/signup`, {
         method: "POST",
         headers: {
-            "Origin": 'https://learn.more.nomoredomains.sbs',
-            'Access-Control-Request-Origin': 'https://learn.more.nomoredomains.sbs',
+            /* "Origin": 'https://learn.more.nomoredomains.sbs',
+            'Access-Control-Request-Origin': 'https://learn.more.nomoredomains.sbs', */
             "Content-Type": "application/json"
         },
         credentials: 'include',
@@ -24,8 +24,8 @@ export const auth = (data) => {
     return fetch(`${BASE_URL}/signin`, {
         method: "POST",
         headers: {
-            "Origin": 'https://learn.more.nomoredomains.sbs',
-            'Access-Control-Request-Origin': 'https://learn.more.nomoredomains.sbs',
+            /* "Origin": 'https://learn.more.nomoredomains.sbs',
+            'Access-Control-Request-Origin': 'https://learn.more.nomoredomains.sbs', */
             "Content-Type": "application/json"
         },
         credentials: 'include',
