@@ -13,7 +13,7 @@ module.exports.CORS = (req, res, next) => {
     res.header('Access-Control-Allow-Credentials', true);
   }
   const { method } = req;
-  const requestHeaders = req.headers['Access-Control-Request-Headers'];
+  const requestHeaders = req.headers['access-control-request-headers'];
   if (method === 'OPTIONS') {
     console.log(req);
     res.header('Access-Control-Allow-Methods', DEFAULT_ALLOWED_METHODS);
