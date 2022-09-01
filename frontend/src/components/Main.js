@@ -5,8 +5,9 @@ import Card from './Card';
 function Main({onImageDeleteClick, onEditAvatar, onEditProfile, onCardClick, onAddPlace, cards, onCardLike}) {
     const currentUser = React.useContext(CurrentUserContext);
     const {name, about, avatar} = currentUser;
-    
-    const cardElements = cards.map((card) => {
+    const cardElements = cards.data.map((card) => {
+        console.log(card);
+
         return (
             <li key={card._id} className="grid__item">
                 <Card card={card} 
