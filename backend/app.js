@@ -21,14 +21,16 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 const { requestLogger, errorLogger } = require('./src/middlewares/logger');
 
-/* const corsOptions = {
+const corsOptions = {
   origin: 'https://learn.more.nomoredomains.sbs',
   credentials: true,
   optionsSuccessStatus: 200,
-}; */
+};
 
 app.use(express.json());
-app.use(cors);
+app.use(cors(corsOptions));
+
+/* app.use(cors); */
 
 mongoose.connect('mongodb://127.0.0.1:27017/mestodb');
 
@@ -36,8 +38,6 @@ app.use((req, res, next) => {
   console.log(`${req.method}: ${req.path} ${JSON.stringify(req.body)}`);
   next();
 });
-
-/* app.use(cors(corsOptions)); */
 
 app.use(requestLogger);
 app.post('/signin', celebrate({
