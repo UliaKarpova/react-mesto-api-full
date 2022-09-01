@@ -14,14 +14,14 @@ const cardRoutes = require('./src/routes/cardsRoutes');
 const errorProcessing = require('./src/middlewares/errorProcessing');
 const NotFoundError = require('./src/errors/NotFoundError');
 
-const corsOptions = {
+/* const corsOptions = {
   origin: 'https://learn.more.nomoredomains.sbs',
   credentials: true,
   optionsSuccessStatus: 200,
-};
+}; */
 const { PORT = 3000 } = process.env;
 const app = express();
-app.use(cors(corsOptions));
+app.use(cors);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
