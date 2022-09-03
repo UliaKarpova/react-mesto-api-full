@@ -1,6 +1,7 @@
 require('dotenv').config();
 const { errors } = require('celebrate');
 const express = require('express');
+const helmet = require('helmet');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
@@ -19,12 +20,11 @@ mongoose.connect('mongodb://127.0.0.1:27017/mestodb');
 
 const app = express();
 app.use(CORS);
+app.use(helmet());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(requestLogger);
-
-/* app.use(express.json()); */
 
 app.use((req, res, next) => {
   console.log(`${req.method}: ${req.path} ${JSON.stringify(req.body)}`);

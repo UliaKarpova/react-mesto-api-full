@@ -183,6 +183,8 @@ function App() {
 
         api.addNewCard(data)
         .then((newCard) => {
+            console.log(newCard);
+            console.log(data);
             setCards([newCard, ...cards]);
             closeAllPopups();
             setSubmitDisabled(false)
