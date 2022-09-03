@@ -1,7 +1,7 @@
 const allowedCors = [
   'http://learn.more.nomoredomains.sbs',
   'https://learn.more.nomoredomains.sbs',
-  'http://localhost:3000',
+  'http://localhost:3001',
 ];
 const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
 
