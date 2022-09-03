@@ -105,9 +105,10 @@ function App() {
     function handleLogout(data) {
         apiAuth.logout(data)
         .then((res) => {
+            history.push('/signin');
             setLoggedIn(false);
             setUserEmail('');
-            history.push('/signin');
+            setCurrentUser({});
         }).catch((err) => console.log(err))
     }
 
