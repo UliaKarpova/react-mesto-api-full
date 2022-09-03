@@ -96,8 +96,9 @@ function App() {
     function handleLogin(data) {
         apiAuth.auth(data)
         .then((res) => {
+            console.log(data);
             setLoggedIn(true);
-            setCurrentUser(data);
+            /* setCurrentUser(data); */
             setUserEmail(data.email);
             history.push('/');
         }).catch((err) => console.log(err))
