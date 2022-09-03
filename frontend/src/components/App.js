@@ -97,6 +97,7 @@ function App() {
         apiAuth.auth(data)
         .then((res) => {
             setLoggedIn(true);
+            setCurrentUser(data);
             setUserEmail(data.email);
             history.push('/');
         }).catch((err) => console.log(err))
@@ -143,7 +144,6 @@ function App() {
 
         api.sendNewProfileInfo(data)
         .then((info) => {
-            console.log(info);
             setCurrentUser(info);
             closeAllPopups();
             setSubmitDisabled(false);
@@ -155,7 +155,6 @@ function App() {
 
         api.sendNewAvatar(data)
         .then((info) => {
-            console.log(info);
             setCurrentUser(info);
             closeAllPopups();
             setSubmitDisabled(false);
