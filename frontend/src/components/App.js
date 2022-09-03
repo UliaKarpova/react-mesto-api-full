@@ -63,7 +63,7 @@ function App() {
         api.getInfo()])
 
         .then(([cards, data]) => {
-            setCards(cards.data);
+            setCards(cards);
             setCurrentUser(data);
         }).catch((err) => console.log(err));
     }, [])
@@ -183,9 +183,7 @@ function App() {
 
         api.addNewCard(data)
         .then((newCard) => {
-            console.log(newCard.card);
-            console.log(data);
-            setCards([newCard.card, ...cards]);
+            setCards([newCard, ...cards]);
             closeAllPopups();
             setSubmitDisabled(false)
         }).catch((err) => console.log(err))
@@ -198,6 +196,8 @@ function App() {
         } else {
         isLiked = card.likes.some(i => i._id === currentUser._id);
         }
+        console.log(isLiked);
+        console.log(card.likes);
         api.changeLikeCardStatus(card._id, !isLiked).then((newCard) => {
             setCards((cards) => cards.map((c) => c._id === card._id ? newCard : c));
         }).catch((err) => console.log(err))
