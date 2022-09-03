@@ -57,14 +57,15 @@ function App() {
     }, [isOpen]) 
   
     useEffect(() => {
-        Promise.all([
-        api.getPhotos(),
-        api.getInfo()])
-
-        .then(([cards, data]) => {
-            setCards(cards.data);
-            setCurrentUser(data);
-        }).catch((err) => console.log(err));
+        if (loggedIn) {
+            Promise.all([
+            api.getPhotos(),
+            api.getInfo()])
+            .then(([cards, data]) => {
+                setCards(cards.data);
+                setCurrentUser(data);
+            }).catch((err) => console.log(err));
+        }
     }, [loggedIn, history])
 
     function handleRegisterSubmit(data) {
