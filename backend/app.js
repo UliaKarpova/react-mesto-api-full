@@ -13,7 +13,7 @@ const { CORS } = require('./src/middlewares/CORS');
 const errorProcessing = require('./src/middlewares/errorProcessing');
 /* const NotFoundError = require('./src/errors/NotFoundError'); */
 const { requestLogger, errorLogger } = require('./src/middlewares/logger');
-const routes = require('./src/routes/index');
+const { router } = require('./src/routes/index');
 
 const { PORT = 3000 } = process.env;
 mongoose.connect('mongodb://127.0.0.1:27017/mestodb');
@@ -58,7 +58,7 @@ app.use('/', cardRoutes);
 app.use('/', () => {
   throw new NotFoundError('Роут не найден');
 }); */
-app.use(routes);
+app.use(router);
 
 app.get('/crash-test', () => {
   setTimeout(() => {
