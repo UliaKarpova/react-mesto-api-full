@@ -48,15 +48,12 @@ app.post('/signup', celebrate({
 }), createUser);
 
 app.use(auth);
-
 app.post('/signout', logout);
-
 app.use('/', userRoutes);
 app.use('/', cardRoutes);
 app.use('/', () => {
   throw new NotFoundError('Роут не найден');
 });
-
 app.get('/crash-test', () => {
   setTimeout(() => {
     throw new Error('Сервер сейчас упадёт');
