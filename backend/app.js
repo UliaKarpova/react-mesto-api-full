@@ -1,9 +1,9 @@
 require('dotenv').config();
 const { errors } = require('celebrate');
 const express = require('express');
-/* const helmet = require('helmet'); */
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const helmet = require('helmet');
 const cookieParser = require('cookie-parser');
 const { celebrate, Joi } = require('celebrate');
 const { login, createUser } = require('./src/controllers/usersController');
@@ -19,7 +19,7 @@ const { PORT = 3000 } = process.env;
 mongoose.connect('mongodb://127.0.0.1:27017/mestodb');
 
 const app = express();
-/* app.use(helmet()); */
+app.use(helmet());
 app.use(CORS);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
