@@ -30,7 +30,7 @@ export const auth = (data) => {
 }
 
 export const logout = () => {
-    return fetch(`${BASE_URL}/logout`, {
+    return fetch(`${BASE_URL}/signout`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
