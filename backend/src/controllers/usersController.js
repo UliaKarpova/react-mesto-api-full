@@ -38,17 +38,18 @@ module.exports.login = (req, res, next) => {
 };
 
 module.exports.logout = (req, res, next) => {
-  const { email, password } = req.body;
+  /* const { email, password } = req.body;
   User.findUserByCredentials(email, password)
-    .then(() => {
-      res.clearCookie('jwt', {
-        httpOnly: true,
-        sameSite: 'none',
-        secure: true,
-      });
-      res.send({ message: 'Выход осуществлён' });
-    })
-    .catch(next);
+    .then(() => { */
+  res.clearCookie('jwt', {
+    httpOnly: true,
+    sameSite: 'none',
+    secure: true,
+  });
+  res.send({ message: 'Выход осуществлён' });
+  /* })
+    .catch( */
+  next();
 };
 
 module.exports.createUser = (req, res, next) => {

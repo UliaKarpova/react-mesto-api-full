@@ -10,7 +10,6 @@ function Card({card, onImageDeleteClick, onCardLike, onCardClick}) {
     ); 
 
     const isLiked = card.likes.some(i => i === currentUser._id);
-    console.log(isLiked);
     const cardLikeButtonClassName = `grid__heart ${isLiked ? 'grid__heart_active' : ''}`; 
     
     const handleImageClick = () => {
