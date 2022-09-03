@@ -99,7 +99,7 @@ module.exports.updateUserInfo = (req, res, next) => {
   })
     .then((user) => {
       console.log(user);
-      res.send({ user });
+      res.send(user);
     })
     .catch((err) => {
       if (err.name === 'CastError' || err.name === 'ValidationError') {
@@ -119,7 +119,7 @@ module.exports.updateUserAvatar = (req, res, next) => {
   })
     .then((user) => {
       console.log(user);
-      res.send({ user });
+      res.send(user);
     })
     .catch((err) => {
       if (err.name === 'CastError' || err.name === 'ValidationError') {

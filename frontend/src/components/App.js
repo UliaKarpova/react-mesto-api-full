@@ -159,7 +159,9 @@ function App() {
 
         api.sendNewProfileInfo(data)
         .then((info) => {
-            setCurrentUser(info);
+            console.log(info);
+            const { name, about, avatar } = info.user;
+            setCurrentUser(name, about, avatar);
             closeAllPopups();
             setSubmitDisabled(false);
         }).catch((err) => console.log(err))
@@ -170,7 +172,9 @@ function App() {
 
         api.sendNewAvatar(data)
         .then((info) => {
-            setCurrentUser(info);
+            console.log(info);
+            const { name, about, avatar } = info.user;
+            setCurrentUser(name, about, avatar);
             closeAllPopups();
             setSubmitDisabled(false);
         }).catch((err) => console.log(err))
