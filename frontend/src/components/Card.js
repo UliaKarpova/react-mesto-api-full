@@ -8,8 +8,12 @@ function Card({card, onImageDeleteClick, onCardLike, onCardClick}) {
     const cardDeleteButtonClassName = (
         `${isOwn ? 'grid__delete-item' : 'grid__delete-item_hidden'}`
     ); 
-
-    const isLiked = card.likes.some(i => i._id === currentUser._id);
+    let isLiked;
+    if (!card.likes) {
+        isLiked = false;
+    } else {
+        isLiked = card.likes.some(i => i._id === currentUser._id);
+    }    
     const cardLikeButtonClassName = `grid__heart ${isLiked ? 'grid__heart_active' : ''}`; 
     
     const handleImageClick = () => {
@@ -40,7 +44,7 @@ function Card({card, onImageDeleteClick, onCardLike, onCardClick}) {
                     onClick={handleLikeClick} 
                     className={cardLikeButtonClassName} />
                     
-                    <span className="grid__likes-number">{card.likes.length}</span>
+                    <span className="grid__likes-number">{!card.likes ? '0' : card.likes.length}</span>
                 </div>
             </div>
             
