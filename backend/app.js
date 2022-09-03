@@ -42,8 +42,7 @@ app.post('/signup', celebrate({
   body: Joi.object().keys({
     name: Joi.string().min(2).max(30),
     about: Joi.string().min(2).max(30),
-    avatar:
-      Joi.string().pattern(/(?:https?):\/\/(\w+:?\w*)?(\S+)(:\d+)?(\.\w{2,3})(\/|\/([\w#!:.?+=&%!\-/]))?/),
+    avatar: Joi.string().pattern(/(?:https?):\/\/(\w+:?\w*)?(\S+)(:\d+)?(\.\w{2,3})(\/|\/([\w#!:.?+=&%!\-/]))?/),
     email: Joi.string().email({ tlds: { allow: false } }).required(),
     password: Joi.string().required(),
   }),
@@ -56,12 +55,13 @@ app.use('/', cardRoutes);
 app.use('/', () => {
   throw new NotFoundError('Роут не найден');
 });
-
 app.get('/crash-test', () => {
   setTimeout(() => {
     throw new Error('Сервер сейчас упадёт');
   }, 0);
 });
+
+/* app.use(routes); */
 
 app.use(errorLogger);
 app.use(errors());
