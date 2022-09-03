@@ -28,3 +28,14 @@ export const auth = (data) => {
         body: JSON.stringify(data)
     }).then(getResponseData);
 }
+
+export const logout = () => {
+    return fetch(`${BASE_URL}/logout`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      credentials: 'include',
+    })
+    .then(getResponseData)
+  }

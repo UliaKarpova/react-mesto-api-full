@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const { celebrate, Joi } = require('celebrate');
-const { login, createUser } = require('./src/controllers/usersController');
+const { login, createUser, logout } = require('./src/controllers/usersController');
 const auth = require('./src/middlewares/auth');
 const userRoutes = require('./src/routes/usersRoutes');
 const cardRoutes = require('./src/routes/cardsRoutes');
@@ -46,6 +46,8 @@ app.post('/signup', celebrate({
     password: Joi.string().required(),
   }),
 }), createUser);
+
+app.post('/signout', logout);
 
 app.use(auth);
 

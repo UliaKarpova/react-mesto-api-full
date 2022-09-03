@@ -68,23 +68,6 @@ function App() {
         }).catch((err) => console.log(err));
     }, [])
 
-
-    /* function tokenCheck() {
-        if (localStorage.getItem('token')) {
-            const token = localStorage.getItem('token');
-                if (token) {
-                    apiAuth.isTokenValid(token)
-                    .then((res) => {
-                        if (res) {
-                            setLoggedIn(true);
-                            setUserEmail(res.data.email);
-                            history.push('/');
-                        }
-                    }).catch((err) => console.log(err));
-                }
-        }
-    } */
-
     function handleRegisterSubmit(data) {
         apiAuth.register(data)
         .then((res) => {
@@ -94,12 +77,6 @@ function App() {
                 setIsUserRegistred(false);
             }
         }).finally(handleInfoTooltipOpen)
-    }
-
-    function handleAccountExit() {
-        history.push('/signin');
-        /* localStorage.removeItem('token'); */
-        setUserEmail('');
     }
 
     function handleInfoTooltipClose() {
@@ -116,15 +93,21 @@ function App() {
         setIsInfoTooltipOpen(true);
     }
 
-    
     function handleLogin(data) {
         apiAuth.auth(data)
         .then((res) => {
-            /* localStorage.setItem('token', res.token); */
             setLoggedIn(true);
-            /* console.log(res); */
             setUserEmail(data.email);
             history.push('/');
+        }).catch((err) => console.log(err))
+    }
+
+    function handleLogout(data) {
+        apiAuth.logout(data)
+        .then((res) => {
+            setLoggedIn(false);
+            setUserEmail('');
+            history.push('/signin');
         }).catch((err) => console.log(err))
     }
 
@@ -190,12 +173,8 @@ function App() {
     }
 
     function handleCardLike(card) {
-        let isLiked;
-        if (!card.likes) {
-            isLiked = false;
-        } else {
-        isLiked = card.likes.some(i => i._id === currentUser._id);
-        }
+        const isLiked = card.likes.some(i => i === currentUser._id);
+
         api.changeLikeCardStatus(card._id, !isLiked).then((newCard) => {
             setCards((cards) => cards.map((c) => c._id === card._id ? newCard.card : c));
         }).catch((err) => console.log(err))
@@ -221,7 +200,7 @@ function App() {
                             <p className='header__account'>{userEmail}</p>
                 
                             <p className='header__account-exit'
-                            onClick={handleAccountExit}>Выйти</p>
+                            onClick={handleLogout}>Выйти</p>
                         </div>
                     </Header>
 
