@@ -3,7 +3,6 @@ const { errors } = require('celebrate');
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const helmet = require('helmet');
 const cookieParser = require('cookie-parser');
 const { celebrate, Joi } = require('celebrate');
 const { login, createUser } = require('./src/controllers/usersController');
@@ -20,7 +19,6 @@ mongoose.connect('mongodb://127.0.0.1:27017/mestodb');
 
 const app = express();
 app.use(CORS);
-app.use(helmet());
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
