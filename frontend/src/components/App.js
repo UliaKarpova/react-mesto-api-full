@@ -56,7 +56,6 @@ function App() {
         }
     }, [isOpen]) 
   
-
     useEffect(() => {
         Promise.all([
         api.getPhotos(),
@@ -66,7 +65,7 @@ function App() {
             setCards(cards.data);
             setCurrentUser(data);
         }).catch((err) => console.log(err));
-    }, [])
+    }, [loggedIn, history])
 
     function handleRegisterSubmit(data) {
         apiAuth.register(data)
@@ -96,12 +95,10 @@ function App() {
     function handleLogin(data) {
         apiAuth.auth(data)
         .then((res) => {
-            console.log(data);
             setLoggedIn(true);
-            /* setCurrentUser(data); */
             setUserEmail(data.email);
             history.push('/');
-        }).catch((err) => console.log(err))
+        }).catch((err) => console.log(err));
     }
 
     function handleLogout(data) {

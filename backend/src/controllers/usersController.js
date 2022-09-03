@@ -25,6 +25,7 @@ module.exports.login = (req, res, next) => {
         maxAge: 3600000 * 24 * 7,
         sameSite: 'none',
         httpOnly: true,
+        secure: true,
       });
       res.send({ message: 'Аутентификация прошла успешно' });
     })
@@ -38,17 +39,12 @@ module.exports.login = (req, res, next) => {
 };
 
 module.exports.logout = (req, res, next) => {
-  /* const { email, password } = req.body;
-  User.findUserByCredentials(email, password)
-    .then(() => { */
   res.clearCookie('jwt', {
     httpOnly: true,
     sameSite: 'none',
     secure: true,
   });
   res.send({ message: 'Выход осуществлён' });
-  /* })
-    .catch( */
   next();
 };
 
