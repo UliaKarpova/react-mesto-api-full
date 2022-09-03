@@ -68,9 +68,6 @@ function App() {
         }).catch((err) => console.log(err));
     }, [])
 
-    /* useEffect(() => {
-        api.changeLikeCardStatus();
-    }, [])
 
     /* function tokenCheck() {
         if (localStorage.getItem('token')) {

@@ -97,7 +97,10 @@ module.exports.updateUserInfo = (req, res, next) => {
     new: true,
     runValidators: true,
   })
-    .then((user) => res.send({ user }))
+    .then((user) => {
+      console.log(user);
+      res.send({ user });
+    })
     .catch((err) => {
       if (err.name === 'CastError' || err.name === 'ValidationError') {
         next(new UncorrectDataError(uncorrectDataErrorMessage));
@@ -114,8 +117,9 @@ module.exports.updateUserAvatar = (req, res, next) => {
     new: true,
     runValidators: true,
   })
-    .then((avatar) => {
-      res.send({ avatar });
+    .then((user) => {
+      console.log(user);
+      res.send({ user });
     })
     .catch((err) => {
       if (err.name === 'CastError' || err.name === 'ValidationError') {

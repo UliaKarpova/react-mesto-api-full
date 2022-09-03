@@ -20,7 +20,6 @@ class Api {
     }
 
     getPhotos = () => {
-        console.log(this._url);
         return fetch(`${this._url}/cards`, {
             method: 'GET',
             headers: this._headers,
