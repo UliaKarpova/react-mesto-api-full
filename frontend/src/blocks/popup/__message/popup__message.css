@@ -8,3 +8,11 @@
     text-align: center;
     margin: 0 36px 60px;
 }
+
+@media (max-width: 520px) {
+    .popup__message {
+        font-size: 18px;
+        line-height: 22px;
+        margin: 25px 22px 0;
+    }
+}
